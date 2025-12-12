@@ -42,3 +42,5 @@
 .DS_Store
 /ios/,
 /ios/Pods
+/ios/build
+ios/Podfile.lock

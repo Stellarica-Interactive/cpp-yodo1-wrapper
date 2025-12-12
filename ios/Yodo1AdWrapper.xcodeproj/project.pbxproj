@@ -172,7 +172,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Yodo1AdWrapper/Pods-Yodo1AdWrapper-resources.sh\"\n";
+			shellScript = "if [ \"$CONFIGURATION\" = \"Release\" ]; then\n    echo \"Skipping resource copy for framework build\"\n    exit 0\nfi\n\"${PODS_ROOT}/Target Support Files/Pods-Yodo1AdWrapper/Pods-Yodo1AdWrapper-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D67405BEA7528C00FE9B4D8A /* [CP] Check Pods Manifest.lock */ = {
