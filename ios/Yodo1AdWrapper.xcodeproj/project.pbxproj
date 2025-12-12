@@ -1,0 +1,459 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		562192FBAFAFE7AA57D64904 /* Pods_Yodo1AdWrapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46A08F5466A9E52C06CB0F90 /* Pods_Yodo1AdWrapper.framework */; };
+		A8E433B22EECD2E8008CDE77 /* ad_manager.h in Headers */ = {isa = PBXBuildFile; fileRef = A8E433B12EECD2E8008CDE77 /* ad_manager.h */; };
+		A8E433B42EECD2F6008CDE77 /* yodo1mas_ios_wrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = A8E433B32EECD2F6008CDE77 /* yodo1mas_ios_wrapper.h */; };
+		A8E433B62EECD2FE008CDE77 /* ad_wrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = A8E433B52EECD2FE008CDE77 /* ad_wrapper.h */; };
+		A8E433B82EECD30C008CDE77 /* yodo1mas_ios_wrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8E433B72EECD30C008CDE77 /* yodo1mas_ios_wrapper.mm */; };
+		A8E433BC2EECD38E008CDE77 /* ad_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A8E433BB2EECD38E008CDE77 /* ad_manager.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		46A08F5466A9E52C06CB0F90 /* Pods_Yodo1AdWrapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yodo1AdWrapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		808BB7BA6DE2A1628522EEFE /* Pods-Yodo1AdWrapper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yodo1AdWrapper.debug.xcconfig"; path = "Target Support Files/Pods-Yodo1AdWrapper/Pods-Yodo1AdWrapper.debug.xcconfig"; sourceTree = "<group>"; };
+		91AEEB4D9DDA68161D1CDAC4 /* Pods-Yodo1AdWrapper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yodo1AdWrapper.release.xcconfig"; path = "Target Support Files/Pods-Yodo1AdWrapper/Pods-Yodo1AdWrapper.release.xcconfig"; sourceTree = "<group>"; };
+		A8E431432EECD022008CDE77 /* Yodo1AdWrapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Yodo1AdWrapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8E433B12EECD2E8008CDE77 /* ad_manager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ad_manager.h; path = ../include/ad_manager.h; sourceTree = SOURCE_ROOT; };
+		A8E433B32EECD2F6008CDE77 /* yodo1mas_ios_wrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = yodo1mas_ios_wrapper.h; path = ../include/yodo1mas_ios_wrapper.h; sourceTree = SOURCE_ROOT; };
+		A8E433B52EECD2FE008CDE77 /* ad_wrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ad_wrapper.h; path = ../include/ad_wrapper.h; sourceTree = SOURCE_ROOT; };
+		A8E433B72EECD30C008CDE77 /* yodo1mas_ios_wrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = yodo1mas_ios_wrapper.mm; path = ../src/ios/yodo1mas_ios_wrapper.mm; sourceTree = SOURCE_ROOT; };
+		A8E433BB2EECD38E008CDE77 /* ad_manager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ad_manager.cpp; path = ../src/common/ad_manager.cpp; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A8E431402EECD022008CDE77 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				562192FBAFAFE7AA57D64904 /* Pods_Yodo1AdWrapper.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		850061C2AF34A1019A29FA56 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				808BB7BA6DE2A1628522EEFE /* Pods-Yodo1AdWrapper.debug.xcconfig */,
+				91AEEB4D9DDA68161D1CDAC4 /* Pods-Yodo1AdWrapper.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		A8E431392EECD022008CDE77 = {
+			isa = PBXGroup;
+			children = (
+				A8E431442EECD022008CDE77 /* Products */,
+				A8E433B12EECD2E8008CDE77 /* ad_manager.h */,
+				A8E433BB2EECD38E008CDE77 /* ad_manager.cpp */,
+				A8E433B32EECD2F6008CDE77 /* yodo1mas_ios_wrapper.h */,
+				A8E433B52EECD2FE008CDE77 /* ad_wrapper.h */,
+				A8E433B72EECD30C008CDE77 /* yodo1mas_ios_wrapper.mm */,
+				850061C2AF34A1019A29FA56 /* Pods */,
+				AC27132F5274586D09B08B62 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		A8E431442EECD022008CDE77 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A8E431432EECD022008CDE77 /* Yodo1AdWrapper.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AC27132F5274586D09B08B62 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				46A08F5466A9E52C06CB0F90 /* Pods_Yodo1AdWrapper.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		A8E4313E2EECD022008CDE77 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A8E433B22EECD2E8008CDE77 /* ad_manager.h in Headers */,
+				A8E433B62EECD2FE008CDE77 /* ad_wrapper.h in Headers */,
+				A8E433B42EECD2F6008CDE77 /* yodo1mas_ios_wrapper.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		A8E431422EECD022008CDE77 /* Yodo1AdWrapper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A8E4314B2EECD022008CDE77 /* Build configuration list for PBXNativeTarget "Yodo1AdWrapper" */;
+			buildPhases = (
+				D67405BEA7528C00FE9B4D8A /* [CP] Check Pods Manifest.lock */,
+				A8E4313E2EECD022008CDE77 /* Headers */,
+				A8E4313F2EECD022008CDE77 /* Sources */,
+				A8E431402EECD022008CDE77 /* Frameworks */,
+				A8E431412EECD022008CDE77 /* Resources */,
+				A1C4267D5754AEDDA35A2EB0 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Yodo1AdWrapper;
+			productName = Yodo1AdWrapper;
+			productReference = A8E431432EECD022008CDE77 /* Yodo1AdWrapper.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A8E4313A2EECD022008CDE77 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					A8E431422EECD022008CDE77 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+				};
+			};
+			buildConfigurationList = A8E4313D2EECD022008CDE77 /* Build configuration list for PBXProject "Yodo1AdWrapper" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A8E431392EECD022008CDE77;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = A8E431442EECD022008CDE77 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A8E431422EECD022008CDE77 /* Yodo1AdWrapper */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A8E431412EECD022008CDE77 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A1C4267D5754AEDDA35A2EB0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Yodo1AdWrapper/Pods-Yodo1AdWrapper-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Yodo1AdWrapper/Pods-Yodo1AdWrapper-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Yodo1AdWrapper/Pods-Yodo1AdWrapper-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D67405BEA7528C00FE9B4D8A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Yodo1AdWrapper-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A8E4313F2EECD022008CDE77 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A8E433BC2EECD38E008CDE77 /* ad_manager.cpp in Sources */,
+				A8E433B82EECD30C008CDE77 /* yodo1mas_ios_wrapper.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		A8E4314C2EECD022008CDE77 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 808BB7BA6DE2A1628522EEFE /* Pods-Yodo1AdWrapper.debug.xcconfig */;
+			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = PZB68YSPM7;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/AFNetworking/AFNetworking.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/YDYThinkingSDK/YDYThinkingSDK.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/YYModel/YYModel.framework/Headers\"",
+					"\"$(PROJECT_DIR)/../include\"",
+				);
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = gnu17;
+				PRODUCT_BUNDLE_IDENTIFIER = com.stellaricainteractive.Yodo1AdWrapper;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = auto;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				XROS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		A8E4314D2EECD022008CDE77 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 91AEEB4D9DDA68161D1CDAC4 /* Pods-Yodo1AdWrapper.release.xcconfig */;
+			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = PZB68YSPM7;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/AFNetworking/AFNetworking.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/YDYThinkingSDK/YDYThinkingSDK.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/YYModel/YYModel.framework/Headers\"",
+					"\"$(PROJECT_DIR)/../include\"",
+				);
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = gnu17;
+				PRODUCT_BUNDLE_IDENTIFIER = com.stellaricainteractive.Yodo1AdWrapper;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = auto;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				XROS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+		A8E4314E2EECD022008CDE77 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		A8E4314F2EECD022008CDE77 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A8E4313D2EECD022008CDE77 /* Build configuration list for PBXProject "Yodo1AdWrapper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A8E4314E2EECD022008CDE77 /* Debug */,
+				A8E4314F2EECD022008CDE77 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A8E4314B2EECD022008CDE77 /* Build configuration list for PBXNativeTarget "Yodo1AdWrapper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A8E4314C2EECD022008CDE77 /* Debug */,
+				A8E4314D2EECD022008CDE77 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A8E4313A2EECD022008CDE77 /* Project object */;
+}

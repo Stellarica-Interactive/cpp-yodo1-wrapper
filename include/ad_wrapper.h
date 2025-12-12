@@ -55,12 +55,3 @@ public:
     virtual void setRewardedEarnedCallback(RewardEarnedCallback callback) = 0;
     virtual void setRewardedClosedCallback(AdClosedCallback callback) = 0;
 };
-
-// Singleton accessor for the platform-specific implementation
-class AdManager {
-public:
-    static AdWrapper& getInstance();
-
-private:
-    AdManager() = delete;
-};

@@ -6,7 +6,7 @@
 #import <Yodo1MasCore/Yodo1MasBannerAdView.h>
 
 // Objective-C bridge class to handle iOS SDK callbacks
-@interface Yodo1IOSAdBridge : NSObject <Yodo1MasRewardAdDelegate, Yodo1MasInterstitialAdDelegate, Yodo1MasBannerAdDelegate>
+@interface Yodo1IOSAdBridge : NSObject <Yodo1MasRewardDelegate, Yodo1MasInterstitialDelegate, Yodo1MasBannerAdViewDelegate>
 @property (nonatomic, assign) Yodo1IOSAdWrapper* wrapper;
 @property (nonatomic, strong) Yodo1MasBannerAdView* bannerAdView;
 @end
@@ -23,13 +23,17 @@
     return self;
 }
 
-#pragma mark - Yodo1MasRewardAdDelegate
+#pragma mark - Yodo1MasRewardDelegate
 
-- (void)onAdOpened:(Yodo1MasAdEvent *)event {
-    // Reward ad opened
+- (void)onRewardAdLoaded:(Yodo1MasRewardAd *)ad {
+    if (_wrapper && _wrapper->rewardedLoadedCallback_) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            _wrapper->rewardedLoadedCallback_();
+        });
+    }
 }
 
-- (void)onAdClosed:(Yodo1MasAdEvent *)event {
+- (void)onRewardAdClosed:(Yodo1MasRewardAd *)ad {
     if (_wrapper && _wrapper->rewardedClosedCallback_) {
         dispatch_async(dispatch_get_main_queue(), ^{
             _wrapper->rewardedClosedCallback_();
@@ -37,9 +41,9 @@
     }
 }
 
-- (void)onAdError:(Yodo1MasAdEvent *)event error:(Yodo1MasError *)error {
+- (void)onRewardAdFailedToLoad:(Yodo1MasRewardAd *)ad withError:(Yodo1MasError *)error {
     if (_wrapper && _wrapper->rewardedFailedCallback_) {
-        NSString* errorMsg = error.message ?: @"Unknown error";
+        NSString* errorMsg = [error description] ?: @"Unknown error";
         std::string errorStr = [errorMsg UTF8String];
         dispatch_async(dispatch_get_main_queue(), ^{
             _wrapper->rewardedFailedCallback_(errorStr);
@@ -47,7 +51,7 @@
     }
 }
 
-- (void)onAdRewardEarned:(Yodo1MasAdEvent *)event {
+- (void)onRewardAdEarned:(Yodo1MasRewardAd *)ad {
     if (_wrapper && _wrapper->rewardedEarnedCallback_) {
         dispatch_async(dispatch_get_main_queue(), ^{
             _wrapper->rewardedEarnedCallback_();
@@ -55,31 +59,9 @@
     }
 }
 
-#pragma mark - Yodo1MasInterstitialAdDelegate
+#pragma mark - Yodo1MasInterstitialDelegate
 
-- (void)onInterstitialAdOpened:(Yodo1MasAdEvent *)event {
-    // Interstitial opened
-}
-
-- (void)onInterstitialAdClosed:(Yodo1MasAdEvent *)event {
-    if (_wrapper && _wrapper->interstitialClosedCallback_) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            _wrapper->interstitialClosedCallback_();
-        });
-    }
-}
-
-- (void)onInterstitialAdError:(Yodo1MasAdEvent *)event error:(Yodo1MasError *)error {
-    if (_wrapper && _wrapper->interstitialFailedCallback_) {
-        NSString* errorMsg = error.message ?: @"Unknown error";
-        std::string errorStr = [errorMsg UTF8String];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            _wrapper->interstitialFailedCallback_(errorStr);
-        });
-    }
-}
-
-- (void)onInterstitialAdLoaded:(Yodo1MasAdEvent *)event {
+- (void)onInterstitialAdLoaded:(Yodo1MasInterstitialAd *)ad {
     if (_wrapper && _wrapper->interstitialLoadedCallback_) {
         dispatch_async(dispatch_get_main_queue(), ^{
             _wrapper->interstitialLoadedCallback_();
@@ -87,30 +69,40 @@
     }
 }
 
-#pragma mark - Yodo1MasBannerAdDelegate
-
-- (void)onBannerAdOpened:(Yodo1MasAdEvent *)event {
-    // Banner opened
-}
-
-- (void)onBannerAdClosed:(Yodo1MasAdEvent *)event {
-    // Banner closed
-}
-
-- (void)onBannerAdError:(Yodo1MasAdEvent *)event error:(Yodo1MasError *)error {
-    if (_wrapper && _wrapper->bannerFailedCallback_) {
-        NSString* errorMsg = error.message ?: @"Unknown error";
-        std::string errorStr = [errorMsg UTF8String];
+- (void)onInterstitialAdClosed:(Yodo1MasInterstitialAd *)ad {
+    if (_wrapper && _wrapper->interstitialClosedCallback_) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            _wrapper->bannerFailedCallback_(errorStr);
+            _wrapper->interstitialClosedCallback_();
         });
     }
 }
 
-- (void)onBannerAdLoaded:(Yodo1MasAdEvent *)event {
+- (void)onInterstitialAdFailedToLoad:(Yodo1MasInterstitialAd *)ad withError:(Yodo1MasError *)error {
+    if (_wrapper && _wrapper->interstitialFailedCallback_) {
+        NSString* errorMsg = [error description] ?: @"Unknown error";
+        std::string errorStr = [errorMsg UTF8String];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            _wrapper->interstitialFailedCallback_(errorStr);
+        });
+    }
+}
+
+#pragma mark - Yodo1MasBannerAdViewDelegate
+
+- (void)onBannerAdLoaded:(Yodo1MasBannerAdView *)ad {
     if (_wrapper && _wrapper->bannerLoadedCallback_) {
         dispatch_async(dispatch_get_main_queue(), ^{
             _wrapper->bannerLoadedCallback_();
+        });
+    }
+}
+
+- (void)onBannerAdFailedToLoad:(Yodo1MasBannerAdView *)ad withError:(Yodo1MasError *)error {
+    if (_wrapper && _wrapper->bannerFailedCallback_) {
+        NSString* errorMsg = [error description] ?: @"Unknown error";
+        std::string errorStr = [errorMsg UTF8String];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            _wrapper->bannerFailedCallback_(errorStr);
         });
     }
 }
@@ -145,7 +137,7 @@ void Yodo1IOSAdWrapper::initialize(const std::string& appKey) {
         fail:^(Yodo1MasError * _Nonnull error) {
             initialized_ = false;
             if (initCallback_) {
-                NSString* errorMsg = error.message ?: @"Unknown error";
+                NSString* errorMsg = [error description] ?: @"Unknown error";
                 std::string errorStr = [errorMsg UTF8String];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     initCallback_(false, errorStr);
@@ -171,42 +163,37 @@ void Yodo1IOSAdWrapper::setCOPPA(bool isAgeRestricted) {
     [[Yodo1Mas sharedInstance] setIsCOPPAAgeRestricted:isAgeRestricted];
 }
 
-// Banner Ads
+// Banner Ads (simplified - banner is a UIView that must be managed by the app)
 void Yodo1IOSAdWrapper::loadBannerAd(const std::string& placementId,
                                        const std::string& size,
                                        const std::string& horizontalAlign,
                                        const std::string& verticalAlign) {
     dispatch_async(dispatch_get_main_queue(), ^{
-        if (!bridge_.bannerAdView) {
-            bridge_.bannerAdView = [[Yodo1MasBannerAdView alloc] init];
-            [bridge_.bannerAdView setAdDelegate:bridge_];
-
-            // Set alignment
-            Yodo1MasAdBannerAlign align = Yodo1MasBannerBottom | Yodo1MasBannerHorizontalCenter;
-            if (verticalAlign == "Top") align = Yodo1MasBannerTop;
-            if (horizontalAlign == "Left") align |= Yodo1MasBannerLeft;
-            else if (horizontalAlign == "Right") align |= Yodo1MasBannerRight;
-
-            [bridge_.bannerAdView setAlign:align];
+        if (bridge_.bannerAdView) {
+            [bridge_.bannerAdView destroy];
+            bridge_.bannerAdView = nil;
         }
-
-        // Load banner
+        
+        NSString* placement = placementId.empty() ? nil : [NSString stringWithUTF8String:placementId.c_str()];
+        bridge_.bannerAdView = [[Yodo1MasBannerAdView alloc] initWithPlacement:placement size:Yodo1MasBannerAdSizeBanner];
+        [bridge_.bannerAdView setAdDelegate:bridge_];
         [bridge_.bannerAdView loadAd];
+        
+        // Note: Banner is a UIView that needs to be added to view hierarchy by the app
+        // The app should get the view via bridge_.bannerAdView and add it to their view hierarchy
     });
 }
 
 void Yodo1IOSAdWrapper::showBannerAd() {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        if (bridge_.bannerAdView) {
-            [bridge_.bannerAdView showAd];
-        }
-    });
+    // Banner is a UIView - visibility is managed by adding/removing from superview
+    // This is a no-op in the wrapper, app must manage the view hierarchy
 }
 
 void Yodo1IOSAdWrapper::hideBannerAd() {
     dispatch_async(dispatch_get_main_queue(), ^{
         if (bridge_.bannerAdView) {
-            [bridge_.bannerAdView dismissAd];
+            [bridge_.bannerAdView destroy];
+            bridge_.bannerAdView = nil;
         }
     });
 }
@@ -222,10 +209,7 @@ bool Yodo1IOSAdWrapper::isInterstitialAdLoaded() const {
 
 void Yodo1IOSAdWrapper::showInterstitialAd(const std::string& placementId) {
     dispatch_async(dispatch_get_main_queue(), ^{
-        UIViewController* rootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
-        if (rootVC) {
-            [[Yodo1MasInterstitialAd sharedInstance] showAdWithViewController:rootVC];
-        }
+        [[Yodo1MasInterstitialAd sharedInstance] showAd];
     });
 }
 
@@ -240,10 +224,7 @@ bool Yodo1IOSAdWrapper::isRewardedAdLoaded() const {
 
 void Yodo1IOSAdWrapper::showRewardedAd(const std::string& placementId) {
     dispatch_async(dispatch_get_main_queue(), ^{
-        UIViewController* rootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
-        if (rootVC) {
-            [[Yodo1MasRewardAd sharedInstance] showAdWithViewController:rootVC];
-        }
+        [[Yodo1MasRewardAd sharedInstance] showAd];
     });
 }
 

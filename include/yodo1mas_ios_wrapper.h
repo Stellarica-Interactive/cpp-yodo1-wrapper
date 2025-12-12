@@ -1,6 +1,6 @@
 #pragma once
 
-#include "yodo1mas_wrapper.h"
+#include "ad_wrapper.h"
 
 // Forward declaration for Objective-C++ bridge
 #ifdef __OBJC__
@@ -54,7 +54,8 @@ public:
     void setRewardedEarnedCallback(RewardEarnedCallback callback) override;
     void setRewardedClosedCallback(AdClosedCallback callback) override;
 
-private:
+// Public for Objective-C bridge access (C++ doesn't support friend with @interface)
+public:
     bool initialized_ = false;
     Yodo1IOSAdBridge* bridge_ = nullptr;
 
