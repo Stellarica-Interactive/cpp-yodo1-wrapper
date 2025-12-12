@@ -1,0 +1,10 @@
+source 'https://github.com/CocoaPods/Specs.git'
+source 'https://github.com/Yodo1Games/MAS-Spec.git'
+
+platform :ios, '13.0'
+
+target 'Yodo1AdWrapper' do
+  use_frameworks!
+
+  pod 'Yodo1MasCore', '4.17.1'
+end

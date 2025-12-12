@@ -1,0 +1,18 @@
+#!/bin/bash
+
+echo "To create the Xcode project for Yodo1AdWrapper:"
+echo ""
+echo "1. Open Xcode"
+echo "2. File > New > Project"
+echo "3. Choose 'Framework' under iOS"
+echo "4. Name: Yodo1AdWrapper"
+echo "5. Language: Objective-C"
+echo "6. Save in: $(pwd)"
+echo ""
+echo "Then run these commands to configure it:"
+echo ""
+echo "cd Yodo1AdWrapper"
+echo "# Add your source files and configure build settings as per README.md"
+echo ""
+echo "Or, if you prefer a command-line approach, I can help generate the project files."
+echo "Would you like me to create a detailed setup script? (This is complex and Xcode GUI is recommended)"
