@@ -30,6 +30,20 @@
 
    **Important:** From now on, always open `Yodo1AdWrapper.xcworkspace` instead of the `.xcodeproj` file!
 
+   **After `pod install`:** CocoaPods will regenerate build scripts and remove the resource copy fix. You need to manually edit the Xcode project file:
+
+   Open `Yodo1AdWrapper.xcodeproj/project.pbxproj` in a text editor and find the line with:
+   ```
+   shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Yodo1AdWrapper/Pods-Yodo1AdWrapper-resources.sh\"\n";
+   ```
+
+   Replace it with:
+   ```
+   shellScript = "if [ \"$CONFIGURATION\" = \"Release\" ]; then\n    echo \"Skipping resource copy for framework build\"\n    exit 0\nfi\n\"${PODS_ROOT}/Target Support Files/Pods-Yodo1AdWrapper/Pods-Yodo1AdWrapper-resources.sh\"\n";
+   ```
+
+   This prevents CocoaPods resource copying from failing during framework archive.
+
 4. **Configure Build Settings** (in the .xcworkspace):
    - Select the `Yodo1AdWrapper` target
    - Go to **Build Settings**
