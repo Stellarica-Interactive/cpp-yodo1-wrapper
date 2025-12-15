@@ -44,3 +44,10 @@
 /ios/Pods
 /ios/build
 ios/Podfile.lock
+/android-yodo1-native-bridge/.gradle
+android-yodo1-native-bridge/gradle/wrapper/gradle-wrapper.properties
+android-yodo1-native-bridge/gradle/wrapper/gradle-wrapper.jar
+android-yodo1-native-bridge/gradlew
+android-yodo1-native-bridge/gradlew.bat
+/android-yodo1-native-bridge/adsbridge/build/intermediates
+/android-yodo1-native-bridge/build/reports

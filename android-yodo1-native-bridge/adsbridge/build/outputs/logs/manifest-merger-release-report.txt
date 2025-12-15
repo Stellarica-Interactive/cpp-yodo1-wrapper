@@ -1,0 +1,16 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/bacsigabor/GitHub/hobby/cpp-yodo1-wrapper/android-yodo1-native-bridge/adsbridge/build/intermediates/tmp/ProcessLibraryManifest/release/tempAndroidManifest931179958029220118.xml:2:13-83
+INJECTED from /Users/bacsigabor/GitHub/hobby/cpp-yodo1-wrapper/android-yodo1-native-bridge/adsbridge/build/intermediates/tmp/ProcessLibraryManifest/release/tempAndroidManifest931179958029220118.xml:2:13-83
+	package
+		INJECTED from /Users/bacsigabor/GitHub/hobby/cpp-yodo1-wrapper/android-yodo1-native-bridge/adsbridge/build/intermediates/tmp/ProcessLibraryManifest/release/tempAndroidManifest931179958029220118.xml
+	xmlns:android
+		ADDED from /Users/bacsigabor/GitHub/hobby/cpp-yodo1-wrapper/android-yodo1-native-bridge/adsbridge/build/intermediates/tmp/ProcessLibraryManifest/release/tempAndroidManifest931179958029220118.xml:2:23-81
+uses-sdk
+INJECTED from /Users/bacsigabor/GitHub/hobby/cpp-yodo1-wrapper/android-yodo1-native-bridge/adsbridge/build/intermediates/tmp/ProcessLibraryManifest/release/tempAndroidManifest931179958029220118.xml reason: use-sdk injection requested
+INJECTED from /Users/bacsigabor/GitHub/hobby/cpp-yodo1-wrapper/android-yodo1-native-bridge/adsbridge/build/intermediates/tmp/ProcessLibraryManifest/release/tempAndroidManifest931179958029220118.xml
+INJECTED from /Users/bacsigabor/GitHub/hobby/cpp-yodo1-wrapper/android-yodo1-native-bridge/adsbridge/build/intermediates/tmp/ProcessLibraryManifest/release/tempAndroidManifest931179958029220118.xml
+	android:targetSdkVersion
+		INJECTED from /Users/bacsigabor/GitHub/hobby/cpp-yodo1-wrapper/android-yodo1-native-bridge/adsbridge/build/intermediates/tmp/ProcessLibraryManifest/release/tempAndroidManifest931179958029220118.xml
+	android:minSdkVersion
+		INJECTED from /Users/bacsigabor/GitHub/hobby/cpp-yodo1-wrapper/android-yodo1-native-bridge/adsbridge/build/intermediates/tmp/ProcessLibraryManifest/release/tempAndroidManifest931179958029220118.xml
