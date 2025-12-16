@@ -51,3 +51,4 @@ android-yodo1-native-bridge/gradlew
 android-yodo1-native-bridge/gradlew.bat
 /android-yodo1-native-bridge/adsbridge/build/intermediates
 /android-yodo1-native-bridge/build/reports
+/android-yodo1-native-bridge/yodo1bridge/build/intermediates

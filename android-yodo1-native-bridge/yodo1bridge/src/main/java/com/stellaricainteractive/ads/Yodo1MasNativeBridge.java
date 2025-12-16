@@ -12,8 +12,8 @@ import androidx.annotation.NonNull;
 import java.lang.ref.WeakReference;
 
 import com.yodo1.mas.Yodo1Mas;
+import com.yodo1.mas.Yodo1MasSdkConfiguration;
 import com.yodo1.mas.error.Yodo1MasError;
-import com.yodo1.mas.helper.Yodo1MasAdBuildConfig;
 import com.yodo1.mas.banner.Yodo1MasBannerAdView;
 import com.yodo1.mas.banner.Yodo1MasBannerAdSize;
 import com.yodo1.mas.banner.Yodo1MasBannerAdListener;
@@ -81,13 +81,21 @@ public final class Yodo1MasNativeBridge {
             // Banner uses a view listener; we hook when we create the view.
 
             // Init MAS SDK
-            Yodo1Mas.getInstance().init(activity, appKey, new Yodo1Mas.InitListener() {
-                @Override public void onMasInitSuccessful() {
+            Yodo1Mas.getInstance().initMas(activity, appKey, new Yodo1Mas.InitListener() {
+                @Override
+                public void onMasInitSuccessful() {
                     sInitialized = true;
                     nativeOnInit(true, "");
                 }
 
-                @Override public void onMasInitFailed(@NonNull Yodo1MasError error) {
+                @Override
+                public void onMasInitSuccessful(Yodo1MasSdkConfiguration configuration) {
+                    sInitialized = true;
+                    nativeOnInit(true, "");
+                }
+
+                @Override
+                public void onMasInitFailed(@NonNull Yodo1MasError error) {
                     sInitialized = false;
                     nativeOnInit(false, error.toString());
                 }
@@ -145,17 +153,19 @@ public final class Yodo1MasNativeBridge {
             sBannerView.setLayoutParams(lp);
 
             sBannerView.setAdListener(new Yodo1MasBannerAdListener() {
-                @Override public void onBannerAdLoaded(Yodo1MasBannerAdView view) {
-                    nativeOnBannerLoaded();
-                }
+                @Override public void onBannerAdLoaded(Yodo1MasBannerAdView view) { nativeOnBannerLoaded(); }
 
                 @Override public void onBannerAdFailedToLoad(Yodo1MasBannerAdView view, @NonNull Yodo1MasError error) {
                     nativeOnBannerFailed(error.toString());
                 }
 
-                @Override public void onBannerAdClosed(Yodo1MasBannerAdView view) {
-                    // optional
+                @Override public void onBannerAdOpened(Yodo1MasBannerAdView view) {}
+
+                @Override public void onBannerAdFailedToOpen(Yodo1MasBannerAdView view, @NonNull Yodo1MasError error) {
+                    nativeOnBannerFailed(error.toString());
                 }
+
+                @Override public void onBannerAdClosed(Yodo1MasBannerAdView view) {}
             });
 
             sBannerContainer.addView(sBannerView);
@@ -179,7 +189,11 @@ public final class Yodo1MasNativeBridge {
     // Interstitial
     // -------------------------
     public static void loadInterstitial() {
-        runOnUi(() -> Yodo1MasInterstitialAd.getInstance().loadAd());
+        runOnUi(() -> {
+            Activity a = requireActivity();
+            if (a == null) return;
+            Yodo1MasInterstitialAd.getInstance().loadAd(a);
+        });
     }
 
     public static boolean isInterstitialLoaded() {
@@ -201,21 +215,19 @@ public final class Yodo1MasNativeBridge {
 
     private static void hookInterstitialListener() {
         Yodo1MasInterstitialAd.getInstance().setAdListener(new Yodo1MasInterstitialAdListener() {
-            @Override public void onInterstitialAdLoaded(Yodo1MasInterstitialAd ad) {
-                nativeOnInterstitialLoaded();
-            }
+            @Override public void onInterstitialAdLoaded(Yodo1MasInterstitialAd ad) { nativeOnInterstitialLoaded(); }
 
             @Override public void onInterstitialAdFailedToLoad(Yodo1MasInterstitialAd ad, @NonNull Yodo1MasError error) {
                 nativeOnInterstitialFailed(error.toString());
             }
 
-            @Override public void onInterstitialAdClosed(Yodo1MasInterstitialAd ad) {
-                nativeOnInterstitialClosed();
-            }
+            @Override public void onInterstitialAdOpened(Yodo1MasInterstitialAd ad) {}
 
             @Override public void onInterstitialAdFailedToOpen(Yodo1MasInterstitialAd ad, @NonNull Yodo1MasError error) {
                 nativeOnInterstitialFailed(error.toString());
             }
+
+            @Override public void onInterstitialAdClosed(Yodo1MasInterstitialAd ad) { nativeOnInterstitialClosed(); }
         });
     }
 
@@ -223,7 +235,11 @@ public final class Yodo1MasNativeBridge {
     // Rewarded
     // -------------------------
     public static void loadRewarded() {
-        runOnUi(() -> Yodo1MasRewardAd.getInstance().loadAd());
+        runOnUi(() -> {
+            Activity a = requireActivity();
+            if (a == null) return;
+            Yodo1MasRewardAd.getInstance().loadAd(a);
+        });
     }
 
     public static boolean isRewardedLoaded() {
@@ -245,25 +261,21 @@ public final class Yodo1MasNativeBridge {
 
     private static void hookRewardedListener() {
         Yodo1MasRewardAd.getInstance().setAdListener(new Yodo1MasRewardAdListener() {
-            @Override public void onRewardAdLoaded(Yodo1MasRewardAd ad) {
-                nativeOnRewardedLoaded();
-            }
+            @Override public void onRewardAdLoaded(Yodo1MasRewardAd ad) { nativeOnRewardedLoaded(); }
 
             @Override public void onRewardAdFailedToLoad(Yodo1MasRewardAd ad, @NonNull Yodo1MasError error) {
                 nativeOnRewardedFailed(error.toString());
             }
 
-            @Override public void onRewardAdEarned(Yodo1MasRewardAd ad) {
-                nativeOnRewardedEarned();
-            }
-
-            @Override public void onRewardAdClosed(Yodo1MasRewardAd ad) {
-                nativeOnRewardedClosed();
-            }
+            @Override public void onRewardAdOpened(Yodo1MasRewardAd ad) {}
 
             @Override public void onRewardAdFailedToOpen(Yodo1MasRewardAd ad, @NonNull Yodo1MasError error) {
                 nativeOnRewardedFailed(error.toString());
             }
+
+            @Override public void onRewardAdEarned(Yodo1MasRewardAd ad) { nativeOnRewardedEarned(); }
+
+            @Override public void onRewardAdClosed(Yodo1MasRewardAd ad) { nativeOnRewardedClosed(); }
         });
     }
 
@@ -302,10 +314,14 @@ public final class Yodo1MasNativeBridge {
     private static Yodo1MasBannerAdSize parseBannerSize(String size) {
         if (size == null) return Yodo1MasBannerAdSize.Banner;
         switch (size) {
-            case "Leaderboard":
-                return Yodo1MasBannerAdSize.Leaderboard;
-            case "MRec":
-                return Yodo1MasBannerAdSize.MRec;
+            case "LargeBanner":
+                return Yodo1MasBannerAdSize.LargeBanner;
+            case "SmartBanner":
+                return Yodo1MasBannerAdSize.SmartBanner;
+            case "IABMediumRectangle":
+                return Yodo1MasBannerAdSize.IABMediumRectangle;
+            case "AdaptiveBanner":
+                return Yodo1MasBannerAdSize.AdaptiveBanner;
             case "Banner":
             default:
                 return Yodo1MasBannerAdSize.Banner;

@@ -20,4 +20,4 @@ dependencyResolutionManagement {
         maven { url "https://cboost.jfrog.io/artifactory/chartboost-ads/" }
     }
 }
-include(":adsbridge")
+include(":yodo1bridge")
