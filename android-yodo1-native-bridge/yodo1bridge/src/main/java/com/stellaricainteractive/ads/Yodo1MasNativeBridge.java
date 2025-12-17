@@ -1,8 +1,9 @@
-package com.bachey.ads;
+package com.stellaricainteractive.ads;
 
 import android.app.Activity;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -54,6 +55,7 @@ public final class Yodo1MasNativeBridge {
     /** Call once from the host app (Activity) early (e.g. onCreate / plugin entry). */
     public static void setActivity(Activity activity) {
         sActivity = new WeakReference<>(activity);
+        Log.d("Yodo1Bridge", "setActivity() called");
     }
 
     private static Activity requireActivity() {
@@ -85,18 +87,21 @@ public final class Yodo1MasNativeBridge {
                 @Override
                 public void onMasInitSuccessful() {
                     sInitialized = true;
+                    Log.d("Yodo1Bridge", "initialized: activity=" + (sActivity.get() != null));
                     nativeOnInit(true, "");
                 }
 
                 @Override
                 public void onMasInitSuccessful(Yodo1MasSdkConfiguration configuration) {
                     sInitialized = true;
+                    Log.d("Yodo1Bridge", "initialized: activity=" + (sActivity.get() != null));
                     nativeOnInit(true, "");
                 }
 
                 @Override
                 public void onMasInitFailed(@NonNull Yodo1MasError error) {
                     sInitialized = false;
+                    Log.d("Yodo1Bridge", "initialization failed: activity=" + (sActivity.get() != null));
                     nativeOnInit(false, error.toString());
                 }
             });
@@ -138,6 +143,8 @@ public final class Yodo1MasNativeBridge {
                 sBannerView = null;
             }
 
+            Log.d("Yodo1Bridge", "loading banner ad: activity=" + (sActivity.get() != null));
+
             sBannerView = new Yodo1MasBannerAdView(activity);
 
             // Map string size -> enum (extend as you want)
@@ -153,9 +160,14 @@ public final class Yodo1MasNativeBridge {
             sBannerView.setLayoutParams(lp);
 
             sBannerView.setAdListener(new Yodo1MasBannerAdListener() {
-                @Override public void onBannerAdLoaded(Yodo1MasBannerAdView view) { nativeOnBannerLoaded(); }
+                @Override public void onBannerAdLoaded(Yodo1MasBannerAdView view) { 
+                    Log.d("Yodo1Bridge", "banner ad loaded: activity=" + (sActivity.get() != null));
+                    nativeOnBannerLoaded();
+                 }
 
                 @Override public void onBannerAdFailedToLoad(Yodo1MasBannerAdView view, @NonNull Yodo1MasError error) {
+                    Log.d("Yodo1Bridge", "banner ad failed to load: activity=" + (sActivity.get() != null) + ", error=" + error);
+
                     nativeOnBannerFailed(error.toString());
                 }
 
@@ -261,9 +273,13 @@ public final class Yodo1MasNativeBridge {
 
     private static void hookRewardedListener() {
         Yodo1MasRewardAd.getInstance().setAdListener(new Yodo1MasRewardAdListener() {
-            @Override public void onRewardAdLoaded(Yodo1MasRewardAd ad) { nativeOnRewardedLoaded(); }
+            @Override public void onRewardAdLoaded(Yodo1MasRewardAd ad) { 
+                Log.d("Yodo1Bridge", "rewarded ad loaded: activity=" + (sActivity.get() != null));
+                nativeOnRewardedLoaded(); 
+            }
 
             @Override public void onRewardAdFailedToLoad(Yodo1MasRewardAd ad, @NonNull Yodo1MasError error) {
+                Log.d("Yodo1Bridge", "rewarded ad failed to load: activity=" + (sActivity.get() != null));
                 nativeOnRewardedFailed(error.toString());
             }
 
