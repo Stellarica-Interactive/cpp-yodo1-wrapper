@@ -16,6 +16,9 @@ android {
 }
 
 dependencies {
+    // Godot library for plugin support
+    implementation "org.godotengine:godot:4.5.1.stable"
+
     // Put your Yodo1 MAS dependency here (example)
     implementation "com.yodo1.mas:full:4.17.1"
 }
