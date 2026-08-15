@@ -156,4 +156,4 @@ cd android
 
 ## License
 
-See LICENSE file for details.
+MIT - see [LICENSE](LICENSE).
